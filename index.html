@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguimiento de Calificaciones de Estudiantes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Seguimiento de Calificaciones de Estudiantes</h2>
+    <p id="average-container">Promedio de Calificaciones: <span id="average">N/A</span></p>
+    <form id="studentform" novalidate>
+        <div>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" required>
+        </div>
+        <div>
+            <label for="lastname">Apellido:</label>
+            <input type="text" id="lastname" required>
+        </div>
+        <div>
+            <label for="grade">Calificación (1.0 - 7.0):</label>
+            <input type="number" id="grade" step="0.1" min="1" max="7" required>
+        </div>
+        <button type="submit">Agregar Estudiante</button>
+    </form>
+    
+    <table id="studenttable" border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Calificación</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+    <script src="script.js"></script>    
+</body>
+</html>
