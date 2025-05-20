@@ -50,12 +50,42 @@ const tablebody = document.querySelector("#studenttable tbody");
 
 function addStudentToTable(student) {
     const row = document.createElement("tr");
+    const index = students.length - 1;
     row.innerHTML = `
         <td>${student.name}</td>
         <td>${student.lastname}</td>
         <td>${student.grade.toFixed(2)}</td>
+        <td><button class="delete-btn" data-index="${index}">Eliminar</button></td>
     `;
     tablebody.appendChild(row);
+
+    row.querySelector(".delete-btn").addEventListener("click", function () {
+        deleteStudent(index);
+    });
+}
+
+function deleteStudent(index) {
+    students.splice(index, 1);
+    updateTable();
+    calculateAverage();
+}
+
+function updateTable() {
+    tablebody.innerHTML = ""; 
+    students.forEach((student, index) => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${student.name}</td>
+            <td>${student.lastname}</td>
+            <td>${student.grade.toFixed(2)}</td>
+            <td><button class="delete-btn" data-index="${index}">Eliminar</button></td>
+        `;
+        tablebody.appendChild(row);
+
+        row.querySelector(".delete-btn").addEventListener("click", function () {
+            deleteStudent(index);
+        });
+    });
 }
 
 function calculateAverage() {
