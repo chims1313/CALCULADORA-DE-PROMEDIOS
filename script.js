@@ -55,16 +55,34 @@ function addStudentToTable(student) {
         <td>${student.name}</td>
         <td>${student.lastname}</td>
         <td>${student.grade.toFixed(2)}</td>
-        <td><button class="delete-btn" data-index="${index}">Eliminar</button></td>
+        <td>
+            <button class="edit-btn" data-index="${index}">Modificar</button>
+            <button class="delete-btn" data-index="${index}">Eliminar</button>
+        </td>
     `;
     tablebody.appendChild(row);
 
     row.querySelector(".delete-btn").addEventListener("click", function () {
         deleteStudent(index);
     });
+
+    row.querySelector(".edit-btn").addEventListener("click", function () {
+        editStudent(index);
+    });
 }
 
 function deleteStudent(index) {
+    students.splice(index, 1);
+    updateTable();
+    calculateAverage();
+}
+
+function editStudent(index) {
+    const student = students[index];
+    document.getElementById("name").value = student.name;
+    document.getElementById("lastname").value = student.lastname;
+    document.getElementById("grade").value = student.grade;
+
     students.splice(index, 1);
     updateTable();
     calculateAverage();
@@ -78,12 +96,19 @@ function updateTable() {
             <td>${student.name}</td>
             <td>${student.lastname}</td>
             <td>${student.grade.toFixed(2)}</td>
-            <td><button class="delete-btn" data-index="${index}">Eliminar</button></td>
+            <td>
+                <button class="edit-btn" data-index="${index}">Modificar</button>
+                <button class="delete-btn" data-index="${index}">Eliminar</button>
+            </td>
         `;
         tablebody.appendChild(row);
 
         row.querySelector(".delete-btn").addEventListener("click", function () {
             deleteStudent(index);
+        });
+
+        row.querySelector(".edit-btn").addEventListener("click", function () {
+            editStudent(index);
         });
     });
 }
