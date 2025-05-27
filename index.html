@@ -8,7 +8,16 @@
 </head>
 <body>
     <h2>Seguimiento de Calificaciones de Estudiantes</h2>
-    <p id="average-container">Promedio de Calificaciones: <span id="average">N/A</span></p>
+    <div class="center-container">
+        <div id="average-container">
+            <p>Promedio de Calificaciones: <span id="average">N/A</span></p>
+            <div id="stats-container">
+                <p>Total de estudiantes: <span id="total-students">0</span></p>
+                <p>Porcentaje de aprobados: <span id="approved-students">0%</span></p>
+                <p>Porcentaje de reprobados: <span id="failed-students">0%</span></p>
+            </div>
+        </div>
+    </div>
     <form id="studentform" novalidate>
         <div>
             <label for="name">Nombre:</label>

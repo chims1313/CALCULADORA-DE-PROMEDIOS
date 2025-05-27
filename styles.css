@@ -41,6 +41,22 @@ p#average-container {
     max-width: 400px;
 }
 
+#average-container {
+    text-align: center;
+    margin: 20px auto;
+    display: block;
+    width: fit-content;
+    border: 1px solid #0056b3;
+    border-radius: 5px;
+    background-color: #e9f5ff;
+    padding: 15px 30px;
+}
+
+#average-container > * {
+    display: block;
+    margin: 10px auto;
+}
+
 form {
     display: inline-block;
     text-align: left;
@@ -120,6 +136,34 @@ table th, table td {
 table th {
     background-color: #f2f2f2;
     font-weight: bold;
+}
+
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#stats-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+#stats-container p {
+    display: inline-block;
+    margin: 0 15px;
+    padding: 8px 15px;
+    border: 1px solid #0056b3;
+    border-radius: 5px;
+    background-color: #e9f5ff;
+    color: #0056b3;
+    font-weight: bold;
+}
+
+#studentform {
+    border: 1px solid #ccc !important;
+    background-color: #ffffff !important;
 }
 
 @media (max-width: 768px) {

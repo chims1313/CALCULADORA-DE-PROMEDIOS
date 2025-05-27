@@ -42,6 +42,7 @@ document.getElementById("studentform").addEventListener("submit", function (e) {
     addStudentToTable(student);
 
     calculateAverage();
+    updateStats();
 
     this.reset();
 });
@@ -75,6 +76,7 @@ function deleteStudent(index) {
     students.splice(index, 1);
     updateTable();
     calculateAverage();
+    updateStats();
 }
 
 function editStudent(index) {
@@ -86,6 +88,7 @@ function editStudent(index) {
     students.splice(index, 1);
     updateTable();
     calculateAverage();
+    updateStats();
 }
 
 function updateTable() {
@@ -111,6 +114,7 @@ function updateTable() {
             editStudent(index);
         });
     });
+    updateStats();
 }
 
 function calculateAverage() {
@@ -121,4 +125,24 @@ function calculateAverage() {
     const total = students.reduce((sum, student) => sum + student.grade, 0);
     const average = (total / students.length).toFixed(2);
     document.getElementById("average").textContent = average;
+}
+
+function updateStats() {
+    const total = students.length;
+    if (total === 0) {
+        document.getElementById("total-students").textContent = "0";
+        document.getElementById("approved-students").textContent = "0%";
+        document.getElementById("failed-students").textContent = "0%";
+        return;
+    }
+
+    const approved = students.filter(s => s.grade >= 4.0).length;
+    const failed = students.filter(s => s.grade < 4.0).length;
+
+    const approvedPercentage = ((approved / total) * 100).toFixed(2);
+    const failedPercentage = ((failed / total) * 100).toFixed(2);
+
+    document.getElementById("total-students").textContent = total;
+    document.getElementById("approved-students").textContent = `${approvedPercentage}%`;
+    document.getElementById("failed-students").textContent = `${failedPercentage}%`;
 }
